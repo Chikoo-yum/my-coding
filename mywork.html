@@ -1,61 +1,72 @@
-<!--pertama kita perlu mendefinisikan paket terlebih dahulu-->
-"dengan nama main" 
+<!--pertama kita perlu mendefinisikan paket terlebih dahulu
+dengan nama main--> 
 package main;
-"sekarang kita impor kelas scanner"
-import java.util.Scanner;
-"dimana digunakan untuk membaca input dari si pengguna"
 
-"selanjutnya, kita definisikan kelas utama dengan nama mid"
+<!--sekarang kita impor kelas scanner-->
+import java.util.Scanner;
+<!--dimana digunakan untuk membaca input dari si pengguna-->
+
+<!--selanjutnya, kita definisikan kelas utama dengan nama mid-->
 public class mid {
-    "kita definisikan array tipe string dengan nama model yang panjangnya 10"
-    "ini digunakan untuk menyimpan data tugas dalam daftar"
+
+    <!--kita definisikan array tipe string dengan nama model yang panjangnya 10
+    ini digunakan untuk menyimpan data tugas dalam daftar-->
     public static String[] model = new String[10];
 
-    "lalu kita definisikan fungsi dengan nama input"
+    <!--lalu kita definisikan fungsi dengan nama input-->
         public static String input(String info) {
-        "ini akan menerima satu parameter bertipe string dengan nama info"
-        "yan di gunakan untuk memberikan info kepada pengguna"
+        <!--ini akan menerima satu parameter bertipe string dengan nama info
+        yang di gunakan untuk memberikan info kepada pengguna"-->
 
-        "nah sekarang kita menampilkan informasi kepada user menggunakan print"
-        "kelas system outt"
+        <!--nah sekarang kita menampilkan informasi kepada user menggunakan print
+        kelas system outt-->
         System.out.print(info + " : ");
-        "dimana menampilkan nilai dari parameter info yang diterima oleh method"
+        <!--dimana menampilkan nilai dari parameter info yang diterima oleh method-->
             
-        "lanjut kita akan membuat input yang membaca  input user menggunakan objek scanner"
-        "dan next line"    
+        <!--lanjut kita akan membuat input yang membaca  input user menggunakan objek scanner
+        dan next line-->    
         var data = scanner.nextLine();
-        "input yang akan di berikan user akan di simpan dalam variabel data"
+        <!--input yang akan di berikan user akan di simpan dalam variabel data-->
 
-        "kita kembalikan nilai dari variabel data sebagai hasil dari method input"
+        <!--kita kembalikan nilai dari variabel data sebagai hasil dari method input-->
         return data;
     }
-    "lalu kita membuat objek scanner dari kelas scanner dan menginisialisasinya"
-    "dengan input dari system.in"
+    <!--lalu kita membuat objek scanner dari kelas scanner dan menginisialisasinya
+    dengan input dari system.in-->
     public static Scanner scanner = new Scanner(System.in);
 
-    "kita definisikan method main sebagai titik masuk utama program"
+    <!--kita definisikan method main sebagai titik masuk utama program-->
     public static void main(String[] args) {
 
-        "nah sekarang kita membuat panggilan, yaitu:"
+        <!--nah sekarang kita membuat panggilan, yaitu:-->
         testViewShowTodoList();
-        "untuk menjalankan program di akhir nantinya"
+        <!--untuk menjalankan program di akhir nantinya-->
     }
 
-    "kita definisikan showtodolist"
+    <!--kita definisikan showtodolist-->
     public static void showTodoList() {
-    "ini akan menampilkan daftar tugas atau TODO LIST"
+    <!--ini akan menampilkan daftar tugas atau TODO LIST-->
 
-        "untuk menampilkan teks 'todo list' kita gunakan method println"
+        <!--kita gunakan method println untuk menampilkan teks 'todo list' 
+        dari kelas system out-->
         System.out.println("TODO LIST");
-        "dari kelas system out"
+        
 
-        "lalu kita memulai loop for untuk iterasi array model"
+        <!--lalu kita memulai loop for untuk iterasi array model-->
         for (var i = 0; i < model.length; i++) {
 
-
+            <!--kita deklerasikan variabel todo dan inisialisasinya dengan
+            nilai dari elemen array model pada indeks i-->
             var todo = model[i];
+
+            <!--deklerasikan variabel no dan inisialisasikan dengan nilai i + 1-->
             var no = i + 1;
+
+            <!--lalu memeriksa apakah nilai todo tidak sama dengan null-->
             if (todo != null) {
+
+                <!--lalu kita tampilkan nomor urut tugas diikuti tanda titik dan spasi
+                dan isi dari tugas menggunakan println-->
                 System.out.println(no + ". " + todo);
             }
         }
