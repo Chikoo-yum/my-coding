@@ -72,36 +72,80 @@ public class mid {
         }
     }
 
+    <!--lalu kita definiskan testshowtodolist-->
     public static void testShowTodoList() {
+        <!--dimana bertujuan untuk menguji dan memanggil method showtodolist-->
+
+        <!--beri nilai 'belajar java' ke elemen pertama model 0 dalam array model-->
         model[0] = "Belajar Java";
+
+        <!--beri nilai 'belajar pemrograman' ke elemen kedua model 1-->
         model[1] = "Belajar Pemrograman";
+
+        <!--panggil method showtodolist-->
         showTodoList();
+        <!--untuk menampilkan dafftar tugas setelah tugas tugas telah
+        ditambahkan ke dalam array model-->
     }
+    <!--kita definiskan method addtodolist dengan satu parameter todo bertipe string-->
     public static void addTodoList(String todo) {
-   
+
+        <!--kita deklarasikan variabel isfull dan inisialisasinya dengan nilai true-->
         var isFull = true;
+        <!--untuk memeriksa apakah daftar tugas sudah penuh-->
+
+        <!--mulai loop for lagi untuk interasi melalui array model-->
         for (int i = 0; i < model.length; i++) {
+
+            <!--periksa apakah elemen array model pada imdeks i memiliki nilai null-->
             if (model[i] == null) {
+                
+                <!--ubah nilai variabel isfull menjadi false jika ditemukan
+                ruang kosong dalam daftar tugas-->
                 isFull = false;
+
+                <!--break untuk menghentikan loop for jika ditemukan ruang kosong dalam daftar tugas-->
                 break;
             }
         }
         if (isFull) {
+        <!--if (isFull) {: Memeriksa apakah variabel isFull bernilai true, yang menandakan bahwa daftar 
+        tugas sudah penuh.--> 
+        
+            <!--kita buat salinan  dari array model dengan menyimpannya dalam variabel temp-->
             var temp = model;
+
+            <!--baut array baru dengan ukuran 2 kali lipat dari ukuran array saat ini-->
             model = new String[model.length * 2];
+
+            <!--mulai loop for untuk iterasi memalalui array temp yang berisi tugas tugas yang telah ada sebelumnya-->
             for (int i = 0; i < temp.length; i++) {
+
+                <!--iterasi loop for, nilai elemen temp i ditetap kan ke elemen yang sesuai di array model i-->
                 model[i] = temp[i];
             }
         }
+        <!--lanjut buat perulangan for untuk mengiterasi melalui setiap elemen dalam model dengan
+        menggunakan variabel i sebagai indeks-->
         for (var i = 0; i < model.length; i++) {
+            
+            <!--kita periksa apakah elemen array model pada indeks i memiliki nilai null-->
             if (model[i] == null) {
+
+                <!--tetapkan nilai todo ke elemen array model pada indeks i-->
                 model[i] = todo;
+
+                <!--hentikan loop for setelah menambah tugas baru ke daftar-->
                 break;
             }
         }
     }
 
+    <!--kita deklarasi method testaddtodolist, metod ini sebagai public sehingga dapar diakses
+    dari luar kela, dan static sehingga dapat dipanggil tanpa membuat objek dari kelas yang mengandung metode ini-->
     public static void testAddTodoList() {
+
+        <!--lanjut panggil fungsi addtodolist dengan argumen yang berbeda beda-->
         addTodoList("Belajar Jawa");
         addTodoList("Belajar Pemrograman");
         addTodoList("Belajar Web");
@@ -117,55 +161,120 @@ public class mid {
         addTodoList("Belajar Jawa");
         addTodoList("Belajar Pemrograman");
         addTodoList("Belajar Web");
-
+        <!--baris baris ini menunjukkan beberapa pemanggilan fungsi addtodolist yang berulang ulang
+        untuk menguji apakah fungsi addtodolist dapat menangani penambahan tugas yang berulang dengan benar-->
+        
+        <!--panggil showtodolist untuk menampilkan daftar tugas yang ada-->
         showTodoList();
     }
+    <!--lanjut kita deklarasi metod removetodolist integer number-->
     public static boolean removeTodoList(Integer number) {
-        //cek apakah numbernya itu adalah 0
+
+
+        <!--lakukakan pengecekan apakah nomor yang diberikan adalah 0. jika ya maka metode akan akan
+        mengembalikan false, menandakan bahwa nomor yang diberikan tidak valid-->
         if (number == 0) {
             return false;
         }
 
+        <!--perikasa apakah nomor di kurangi 1 lebih besar dari indeks terakhir dalam array model
+        jika Jika ya, maka metode akan mengembalikan false, menandakan bahwa nomor yang diberikan melebihi batas 
+        indeks yang valid dalam array model.-->
         if (number - 1 > model.length - 1) {
             return false;
         }
-        //apakah number yang dipilih sudah null
+        
+        <!--cek apakah elemen array model pada indeks number - 1 adalah null. Jika ya, maka metode akan 
+        mengembalikan false, menandakan bahwa tugas dengan nomor yang diberikan belum ada.-->
         if (model[number - 1] == null) {
             return false;
+
+        <!--lakukan penggeseran elemen dalam array untuk mengisi celah yang ditinggalkan oleh elemen yang di hapus-->
         } else {
+
+            <!--buat perulangan for yang dimulai dari indeks number - 1 hingga indeks terakhir dalam array model.-->
             for (int i = number - 1; i < model.length; i++) {
+
+                <!--lakukan pengecekan apakah i sama dengan indeks terakhir dalam array model-->
                 if (i == (model.length - 1)) {
+
+                    <!--Jika ya, maka elemen terakhir dalam array akan dihapus dengan menetapkan nilainya menjadi null.-->
                     model[i] = null;
+
+                <!--jika i bukan indeks terakhir dalam array model, maka elemen model[i] akan diisi dengan nilai elemen yang berada 
+        pada indeks selanjutnya (model[i + 1])-->
                 } else {
                     model[i] = model[i + 1];
                 }
             }
+            <!--kita kembalikan true setelah menghapus tugas dengan nomor yang diberikan-->
             return true;
         }
 
     }
+    <!--deklarasi testremovetodolist-->
     public static void testRemoveTodoList() {
+    <!--metod ini dideklarasikan sebagai public sehingga dapat diakses dari luar kelas-->    
+        
+        <!--panggil funsi addtodolist dengan argumen berbeda-->
         addTodoList("Belajar Jawa");
         addTodoList("Belajar Pemrograman");
         addTodoList("Belajar Web");
+        <!--fungi ini menambahkan tugas baru ke dalam daftar tugas-->
+        
+        <!--panggil fungsi removetodolist dengan argumen 2, ini akan menghapus tugas dengan
+        nomor 2 dari daftar tugas-->
         removeTodoList(2);
+
+        <!--panggil fungsi showtodolist, untuk menampilkan daftar tugas yang ada setelah tugas dengan nomor 2 dihapus-->
         showTodoList();
 
+    <!--panggil viewshowtodolist untuk menampilkan daftar tugas dalam bentuk menu yang memungkinkan iser
+    untuk menambahkan , menghapus tugas, atau keluar dari tampilan daftar tugas-->    
     } public static void viewShowTodoList() {
-        while (true) {
-            showTodoList();
-            System.out.println("MENU : ");
-            System.out.println("1. Tambah");
-            System.out.println("2. Hapus");
-            System.out.println("3. Keluar");
-            var input = input("Pilih");
 
+        <!--buat perulangan while yang akan terus berjalan selama kondisinya true-->
+        while (true) {
+        <!--Hal ini digunakan untuk membuat menu tampilan daftar tugas terus muncul sampai pengguna memilih untuk keluar.-->    
+            
+            <!--panggil showtodolist yang akan menampilkan daftar tugas yang ada-->
+            showTodoList();
+
+            <!--cetak teks menu ke konsol-->
+            System.out.println("MENU : ");
+
+            <!--cetak teks tambah ke konsol dan ini juga akan di gunakan untuk menambahkan tugas ke list-->
+            System.out.println("1. Tambah");
+
+            <!--cetak teks hapus ke konsol dan juga akan digukana untuk menghapus tugas dari list-->
+            System.out.println("2. Hapus");
+
+            <!--cetak teks keluar ke konsol untuk kelaur dari tampilan daftar tugas-->
+            System.out.println("3. Keluar");
+
+            <!--buat untuk meminta input dari user dengan menggunakan fungsi input dan menyimpannya dalam
+            variabel input-->
+            var input = input("Pilih");
+            
+            <!--lakukan pengecekan apakah input yang diberikan adalah "1"-->
             if (input.equals("1")) {
+
+                <!--Jika ya, maka viewAddTodoList akan dipanggil untuk menampilkan tampilan penambahan tugas.-->
                 viewAddTodoList();
+
+            <!--lakukan lagi pengecekan apakah input yang diberikan adalah "2"-->    
             } else if (input.equals("2")) {
+
+                <!--jika ya, viewRemoveTodoList akan dipanggil untuk menampilkan tampilan penghapusan tugas.-->
                 viewRemoveTodoList();
+
+            <!--cek lagi apakah input yang diberikan adalah "3"-->    
             } else if (input.equals("3")) {
+
+                <!--jika ya, maka perulangan while akan dihentikan dengan menggunakan pernyataan break, sehingga user dapat keluar dari tampilan daftar tugas-->
                 break;
+             
+            <!--jika input tidak sama dengan "1", "2", atau "3", maka cetak pesan "Pilih menu dengan benar." ke konsol.-->    
             } else {
                 System.out.println("Pilih menu dengan benar.");
             }
@@ -173,37 +282,75 @@ public class mid {
 
     }
 
+    <!--deklarasi metod statis viewremovetodolist yang hanya dapat diaskes dari dalam kelas yang sama
+    tidak mengembalikan nilai, dan digunakan untuk menampilkan tampilan penganghapusan daftar tugas-->
     private static void viewRemoveTodoList() {
+
+        <!--cetakt teks menghapus todo list ke konsol, memberikan indikasi bahwa user akan menghapus daftar tugas.-->
         System.out.println("MENGHAPUS TODO LIST");
+
+        <!--minta input dari user dengan menggunaka fungsi input dan menyimpannya dalam variabel number
+        user diminta untuk memasukkan nomor tugas yang ingin dihapus atau memasukkan "x" jika ingin membatalkan penghapusan.-->
         var number = input ("Nomor yang dihapus (x jika batal");
+
+        <!--lakukan pengecekan apakah input yang diberikan adlah x, jika ya maka penghapusan tugas dibatalkan-->
         if (number.equals("x")) {
-            //batal
+            
+        <!--Jika input tidak sama dengan "x", maka akan dilakukan penghapusan tugas dengan memanggil fungsi removeTodoList(Integer.valueOf(number))-->    
         } else {
             boolean success = removeTodoList(Integer.valueOf(number));
+            
+            <!--lakukan pengecekan apakah penghapusan tugas berhasil dilakakukan-->
             if (!success){
+
+                <!--jika tidak berhasil atau success bernilai false, maka cetak pesan "gagal menghapus todo list di tambah dengan keterangan
+                    nomor tugas" ke konsol-->
                 System.out.println("Gagal menghapus todo list :" + number);
             }
         }
     }
 
+    <!--sama dengan yang viewremovetodolist, tapi bedanya digunakan untuk menampilkan tampilan penambahan daftar tugas dengan menggunakan private-->    
     private static void viewAddTodoList() {
+
+        <!--cetak menambah todolist ke konsol untuk memberikan indikasi bahwa pengguna akan menambahkan daftar tugas-->
         System.out.println("MENAMBAH TODO LIST");
+        
+        <!--minta input user dengan menggunakan fungsi input dan menyimpannya dalam variabel todo
+        user diminta untuk memasukkan teks tugas yang ingin ditambahkan atau memasukkan "x" jika ingin membatalkan penambahan.-->
         var todo = input ("Todo (x jika batal)");
+
+        <!--cek apakah input yang diberikan adalah x, jika ya maka penambahan akan di batalakan-->
         if (todo.equals ("x")) {
-            //batal
+
+        <!--jika input tidak sama dengan x, maka lakukan penambahan tugas dengan memanggil fungsi addtodolist(todo)-->    
         } else {
             addTodoList(todo);
         }
     }
 
+    <!--deklarasi testviewaddtodolist dengan hanya dapat diakses dalam kelas yang sama dan menunjukkan bahwa ini
+    adalah metode statis-->
     private static void testViewAddTodoList() {
+        
+        <!--panggil viewaddtodolist untuk menampilkan tampilan penambahan daftar tugas-->
         viewAddTodoList();
+
+        <!--panggil showtodolist untuk menampilkan daftar tugas yang ada-->
         showTodoList();
     }
 
+    <!--sama dengan yang diatas tapi beda nya ini pemanggilan testviewshowtodolist dengan kunci public dimana metod ini dapat
+    diakses dari mana saja dan menggunakan metode statis-->
     public static void testViewShowTodoList() {
+        
+        <!--kita buat addtodolist dengan argumen yang berbeda sebagai tampilan pertama program dijalankan-->
         addTodoList("Belajar Java");
         addTodoList("Belajar Web");
+
+        <!--panggil viewshowtodolist untk menampilkan tampilan daftar tugas-->
         viewShowTodoList();
+
+        <!--lalu kita jalankan program nya-->
     }
 }
