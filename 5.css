@@ -1,0 +1,30 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+table{
+    width: 100%;
+}
+
+table, th, td{
+    border: 5px solid orange;
+    border-collapse: collapse;
+}
+th{
+    height: 40px;
+    background-color: aqua;
+    color: black;
+}
+td{
+    text-align: center;
+}
+th, td{
+    padding: 6px;
+}
+tr:hover{
+    background-color: aquamarine;
+}
+tr:nth-child(even){
+    background-color: #ff00ff;
+}
+    
